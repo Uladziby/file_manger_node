@@ -4,6 +4,8 @@ import { goDedicatedFolder } from "./functions/goDedicatedFolder.js";
 import { addFile } from "./functions/addFile.js";
 import { removeFile } from "./functions/removeFile.js";
 import { renameFile } from "./functions/renameFile.js";
+import { copyFile } from "./functions/copyFile.js";
+import { hashFile } from "./functions/hashFile.js";
 
 export const commands = {
   ls: async (args) => await getList(args.path),
@@ -13,4 +15,5 @@ export const commands = {
   rm: async (args) => await removeFile(args),
   rn: async (args) => await renameFile(args),
   cp: async (args) => await copyFile(args),
+  hash: async (args) => await hashFile(args),
 };

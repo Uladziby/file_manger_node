@@ -11,7 +11,7 @@ const app = async () => {
   stdout.write(`Welcome to the File Manager, ${username}!\n${currentPath} `);
 
   stdin.on("data", async (data) => {
-    if (data.toString().trim() === "end") {
+    if (data.toString().trim() === ".exit") {
       process.exit();
     }
 

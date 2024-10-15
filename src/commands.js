@@ -6,6 +6,7 @@ import { removeFile } from "./functions/removeFile.js";
 import { renameFile } from "./functions/renameFile.js";
 import { copyFile } from "./functions/copyFile.js";
 import { hashFile } from "./functions/hashFile.js";
+import { os } from "./functions/os.js";
 
 export const commands = {
   ls: async (args) => await getList(args.path),
@@ -16,4 +17,5 @@ export const commands = {
   rn: async (args) => await renameFile(args),
   cp: async (args) => await copyFile(args),
   hash: async (args) => await hashFile(args),
+  os: async (args) => await os(args.args),
 };

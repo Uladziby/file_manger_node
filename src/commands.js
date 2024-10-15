@@ -12,4 +12,5 @@ export const commands = {
   add: async (args) => await addFile(args),
   rm: async (args) => await removeFile(args),
   rn: async (args) => await renameFile(args),
+  cp: async (args) => await copyFile(args),
 };

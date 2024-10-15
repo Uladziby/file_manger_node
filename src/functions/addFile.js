@@ -1,5 +1,5 @@
-import { writeFile, access } from "fs/promises";
 import path from "node:path";
+import { writeFile, access } from "fs/promises";
 
 export const addFile = async (args) => {
   const filePath = path.resolve(args.path, args.args);

@@ -23,8 +23,8 @@ const app = async () => {
     };
 
     if (isValidCommand(command)) {
-      await executeCommand(command, argument);
-      console.dir(argument, "argument");
+      await executeCommand(command[0], argument);
+
       currentPath = argument.path;
     } else {
       console.error("Invalid command");

@@ -1,0 +1,21 @@
+import { getList } from "./functions/getList.js";
+import { goUpperDirectory } from "./functions/goUpperDirectory.js";
+import { goDedicatedFolder } from "./functions/goDedicatedFolder.js";
+import { addFile } from "./functions/addFile.js";
+import { removeFile } from "./functions/removeFile.js";
+import { renameFile } from "./functions/renameFile.js";
+import { copyFile } from "./functions/copyFile.js";
+import { hashFile } from "./functions/hashFile.js";
+import { os } from "./functions/os.js";
+
+export const commands = {
+  ls: async (args) => await getList(args.path),
+  up: async (args) => await goUpperDirectory(args),
+  cd: async (args) => await goDedicatedFolder(args),
+  add: async (args) => await addFile(args),
+  rm: async (args) => await removeFile(args),
+  rn: async (args) => await renameFile(args),
+  cp: async (args) => await copyFile(args),
+  hash: async (args) => await hashFile(args),
+  os: async (args) => await os(args.args),
+};

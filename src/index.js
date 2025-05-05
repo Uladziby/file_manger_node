@@ -1,14 +1,18 @@
-import { stdout, stdin } from "process";
 import { getUserName } from "./getUserName.js";
 import { isValidCommand } from "./utils/isValidCommand.js";
 import { executeCommand } from "./utils/executeCommand.js";
 import os from "os";
+import { homedir } from "node:os";
+import { chdir, stdin, stdout } from "node:process";
 
 const app = async () => {
-  const username = await getUserName();
   let currentPath = os.homedir();
+  const username = await getUserName();
+
+  chdir(homedir());
 
   stdout.write(`Welcome to the File Manager, ${username}!\n${currentPath} `);
+  stdout.write(`You are currently in ${currentPath}> `);
 
   stdin.on("data", async (data) => {
     if (data.toString().trim() === ".exit") {
@@ -27,15 +31,13 @@ const app = async () => {
 
       currentPath = argument.path;
     } else {
-      console.error("Invalid command");
+      console.error("Invalid command", command[0]);
     }
-
-    stdout.write(`You are currently in ${currentPath}> `);
   });
 
-  process.on("exit", () =>
-    stdout.write(`\nThank you for using File Manager, ${username}, goodbye!`)
-  );
+  process.on("close", () => {
+    output.write(`Thank you for using File Manager, ${userName}, bye!\n`);
+  });
 };
 
-app();
+await app();
